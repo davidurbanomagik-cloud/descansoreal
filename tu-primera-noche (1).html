@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu primera noche de descanso real — Erica Di Cione</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --color-primary: #E8A541;
+            --color-secondary: #7B5BA1;
+            --color-cream: #F5EFE6;
+            --color-text: #2C2416;
+            --color-light-bg: #FDF8F0;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--color-text);
+            line-height: 1.7;
+            background: var(--color-light-bg);
+        }
+
+        .page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 50px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: -100px; right: -100px;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, var(--color-primary) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            bottom: -100px; left: -100px;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, var(--color-secondary) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #D89432 100%);
+            padding: 80px 50px;
+            position: relative;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(123,91,161,0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .cover-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+            margin: 16px 0;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover .subtitle {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.1rem;
+            color: var(--color-cream);
+            margin: 15px 0 40px;
+            font-weight: 400;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover .author {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--color-cream);
+            font-weight: 400;
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.05em;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--color-secondary);
+            margin: 40px 0 25px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 80px; height: 3px;
+            background: var(--color-primary);
+        }
+
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.7rem;
+            color: var(--color-primary);
+            margin: 35px 0 15px;
+            font-weight: 600;
+        }
+
+        p { margin: 15px 0; font-size: 1.05rem; }
+        strong { color: var(--color-secondary); font-weight: 600; }
+        em { color: var(--color-text); font-style: italic; }
+
+        ul, ol { margin: 20px 0; padding-left: 30px; }
+        li { margin: 10px 0; line-height: 1.7; }
+
+        .highlight-box {
+            background: var(--color-cream);
+            border-left: 4px solid var(--color-primary);
+            padding: 20px 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p { margin: 8px 0; }
+
+        .step-header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #D89432 100%);
+            color: white;
+            padding: 28px 30px;
+            margin: 40px -50px 30px;
+        }
+
+        .step-header.optional {
+            background: linear-gradient(135deg, var(--color-secondary) 0%, #6A4D8F 100%);
+        }
+
+        .step-header h3 {
+            color: white;
+            margin: 0;
+            font-size: 1.6rem;
+        }
+
+        .step-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.15);
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+        }
+
+        .step-time {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.85);
+            margin-top: 6px;
+        }
+
+        .divider {
+            width: 80px; height: 2px;
+            background: var(--color-primary);
+            margin: 40px auto;
+            opacity: 0.5;
+        }
+
+        .asset-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--color-cream);
+            border: 1px solid rgba(232,165,65,0.3);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 24px 0;
+        }
+
+        .asset-icon {
+            width: 40px; height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .asset-icon.video { background: rgba(123,91,161,0.1); }
+        .asset-icon.audio { background: rgba(232,165,65,0.15); }
+
+        .asset-text p { margin: 0; font-size: 0.9rem; }
+        .asset-text .asset-label {
+            font-weight: 600;
+            color: var(--color-secondary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 2px;
+        }
+
+        .italic-block {
+            font-style: italic;
+            color: var(--color-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin: 20px 0;
+            padding-left: 20px;
+            border-left: 2px solid rgba(123,91,161,0.2);
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--color-secondary) 0%, #6A4D8F 100%);
+            color: white;
+            padding: 40px;
+            margin: 50px -50px 0;
+            text-align: center;
+        }
+
+        .cta-box p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: white;
+        }
+
+        .cta-box strong { color: var(--color-primary); }
+
+        @media (max-width: 768px) {
+            .page { padding: 40px 25px; }
+            .cover h1 { font-size: 2.4rem; }
+            .cover .subtitle { font-size: 1rem; }
+            .step-header { margin-left: -25px; margin-right: -25px; padding: 22px 25px; }
+            .cta-box { margin-left: -25px; margin-right: -25px; padding: 30px 25px; }
+        }
+
+        @media print {
+            .page { box-shadow: none; page-break-after: always; }
+            .cover { page-break-after: always; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="cover">
+    <div class="cover-emoji">🌙</div>
+    <h1>Tu primera noche<br>de descanso real</h1>
+    <p class="subtitle">El protocolo nocturno de 4 pasos para regular<br>tu sistema nervioso antes de dormir<br>en menos de 20 minutos</p>
+    <p class="author">✦ Erica Di Cione ✦</p>
+</div>
+
+<!-- APERTURA -->
+<div class="page">
+    <h2>🌿 ¿Te suena esto?</h2>
+
+    <p>Te acostás y tu cuerpo está cansado… pero tu cabeza no para.</p>
+    <p>Cerrás los ojos y, de repente, aparecen todos los pendientes, las conversaciones, las preocupaciones. Como si tu mente recién empezara el día.</p>
+
+    <p>¿O sentís el cuerpo inquieto, como si no pudiera entregarse al descanso? La respiración más corta, la mandíbula tensa, el pecho apretado.</p>
+
+    <p>¿Te dormís, pero te despertás a mitad de la noche completamente alerta, sin saber por qué?</p>
+
+    <p>¿O incluso, dormís "toda la noche" pero igual te levantás cansada?</p>
+
+    <div class="highlight-box">
+        <p>Y no, no te pasa porque sí. Ni es que <em>"tenés mala suerte para dormir"</em>.</p>
+        <p>Lo que te está pasando tiene una explicación mucho más profunda, y mucho más común de lo que creés:</p>
+        <p><strong>tu sistema nervioso no está pudiendo salir del estado de alerta.</strong></p>
+    </div>
+
+    <p>Durante el día, tu cuerpo acumula estímulos, decisiones, exigencias, emociones que no llegás a procesar. Y cuando por fin te acostás, en lugar de relajarte, todo eso empieza a expresarse.</p>
+
+    <p>Porque el problema no es dormir.</p>
+    <p>El problema es que tu cuerpo no recibió las señales necesarias para entender que ya es momento de descansar.</p>
+
+    <p>Entonces, aunque cierres los ojos, tu sistema sigue en "modo supervivencia": pensando, procesando, tensionando… como si todavía tuviera que resolver algo urgente.</p>
+
+    <p>Y desde ese lugar, descansar de verdad se vuelve muy difícil.</p>
+
+    <div class="divider"></div>
+
+    <h2>💡 Apagar la luz no apaga tu sistema nervioso</h2>
+
+    <p>Tu cuerpo no cambia de estado automáticamente solo porque te acostás.</p>
+    <p>Necesita una transición. Una señal amorosa que le indique que puede soltar, que puede aflojar, que ya es momento de descansar.</p>
+
+    <p>Y esa señal no tiene que ser compleja. De hecho, cuanto más simple, mejor.</p>
+
+    <p>Por eso, lo que te propongo no es sumar más exigencia a tu día, sino todo lo contrario: empezar a regalarte pequeños momentos. Pequeñas acciones, muy sencillas, que podés incorporar como hábitos y que, de a poco, le enseñan a tu cuerpo a cambiar de ritmo.</p>
+
+    <p>A pasar de la exigencia a la calma. Del hacer, al soltar.</p>
+
+    <div class="italic-block">
+        Es una rutina amable.<br>
+        De esas que no solo vas a sostener por sus beneficios, sino porque se sienten bien.<br>
+        Un pequeño ritual para cerrar el día.<br>
+        Un gesto de cuidado hacia vos.
+    </div>
+
+    <p>Y desde ahí, el descanso deja de ser un esfuerzo, y empieza a suceder.</p>
+</div>
+
+<!-- PASO 1 -->
+<div class="page">
+    <div class="step-header optional">
+        <div class="step-tag">Potenciador, recomendado</div>
+        <h3>🥗 Paso 1 — Preparar el cuerpo: digestión y descanso</h3>
+        <div class="step-time">⏱ 3 horas antes de dormir</div>
+    </div>
+
+    <p>Intentá cenar al menos 2 o 3 horas antes de irte a dormir. No como una regla rígida, sino como una forma de acompañar a tu cuerpo.</p>
+
+    <p>Cuando te acostás y la digestión sigue activa, el organismo todavía está "trabajando", y eso dificulta que entre en un descanso profundo. En cambio, si le das ese tiempo, el cuerpo puede hacer su proceso mientras todavía estás en movimiento, y cuando llega la noche, puede descansar y reparar.</p>
+
+    <p><strong>Elegí, siempre que puedas, alimentos de fácil digestión:</strong></p>
+    <ul>
+        <li>Verduras cocidas, sopas, arroces</li>
+        <li>Legumbres bien cocidas</li>
+        <li>Proteínas livianas</li>
+    </ul>
+
+    <p><strong>Y evitá, en la medida de lo posible, por la noche:</strong> comidas muy pesadas, fritas, muy condimentadas o ultraprocesadas, ya que requieren más energía para digerirse y mantienen al sistema en un estado más activo.</p>
+
+    <div class="highlight-box">
+        <p><strong>Un gesto simple que ayuda mucho:</strong> salir a caminar 10 minutos después de comer. Ese pequeño movimiento acompaña la digestión y le da al cuerpo una señal de cierre.</p>
+        <p style="margin-top: 10px;">También podés dejar de tomar grandes cantidades de agua unas 2 horas antes de dormir, para evitar interrupciones durante la noche.</p>
+    </div>
+</div>
+
+<!-- PASO 2 -->
+<div class="page">
+    <div class="step-header optional">
+        <div class="step-tag">Potenciador, recomendado</div>
+        <h3>🕯️ Paso 2 — Cerrar el día y bajar los estímulos</h3>
+        <div class="step-time">⏱ 1 hora antes de dormir</div>
+    </div>
+
+    <p>No alcanza con apagar el teléfono. Se trata de empezar a bajar el volumen del día.</p>
+
+    <p>Una hora antes de dormir, podés dejar las pantallas y comenzar a crear un entorno más suave:</p>
+
+    <ul>
+        <li>Bajar las luces de la casa, evitar las luces de techo</li>
+        <li>Usar luz más cálida, más tenue, veladores o velas</li>
+        <li>Oscurecer la habitación y mantenerla fresca, como una cueva</li>
+        <li>Un espacio que invite naturalmente al descanso</li>
+    </ul>
+
+    <div class="highlight-box">
+        <p>Todo esto le habla directamente a tu sistema nervioso: le dice que el día terminó, que ya no hace falta estar en alerta.</p>
+    </div>
+</div>
+
+<!-- PASO 3 -->
+<div class="page">
+    <div class="step-header">
+        <div class="step-tag">Núcleo, indispensable</div>
+        <h3>🧘‍♀️ Paso 3 — Soltar el cuerpo, soltar el día</h3>
+        <div class="step-time">⏱ 15 minutos antes de dormir</div>
+    </div>
+
+    <p>Antes de acostarte, regalate unos minutos para liberar el cuerpo.</p>
+    <p>Puede ser algo muy simple: movimientos suaves, estiramientos, balanceos, una respiración consciente o una ducha tibia.</p>
+
+    <p>No es una práctica exigente. Es un momento de transición. Un espacio para decirle al cuerpo: <em>"ya podés aflojar"</em>.</p>
+
+    <p>Cuando el cuerpo suelta, la mente también empieza a hacerlo.</p>
+
+    <div class="asset-box">
+        <div class="asset-icon video">▶</div>
+        <div class="asset-text">
+            <p class="asset-label">Video incluido</p>
+            <p>Rutina completa de 15 minutos con Erica para liberar la tensión del cuello, los hombros y la mandíbula, los lugares donde el cuerpo más guarda el día.</p>
+        </div>
+    </div>
+</div>
+
+<!-- PASO 4 -->
+<div class="page">
+    <div class="step-header">
+        <div class="step-tag">Núcleo, indispensable</div>
+        <h3>🌬️ Paso 4 — Crear un pequeño ritual</h3>
+        <div class="step-time">⏱ En la cama</div>
+    </div>
+
+    <p>Este paso es más sutil, pero muy poderoso.</p>
+
+    <p>Elegí una acción que se repita cada noche: puede ser tomar una infusión, escribir unas líneas, agradecer el día, respirar. Algo simple, pero constante.</p>
+
+    <p>Los rituales le enseñan al sistema nervioso a reconocer patrones. Y con el tiempo, ese pequeño gesto se convierte en una señal directa de descanso. Es un ancla. Un puente entre el hacer y el soltar.</p>
+
+    <div class="asset-box">
+        <div class="asset-icon audio">♪</div>
+        <div class="asset-text">
+            <p class="asset-label">Audio incluido</p>
+            <p>Respiración guiada con la voz de Erica para activar el sistema nervioso parasimpático, el que le dice al cuerpo que puede bajar la guardia. Ponete los auriculares, cerrá los ojos y seguí su voz.</p>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <h3>✨ ¿Por qué funciona todo esto?</h3>
+
+    <p>Porque cada uno de estos pasos le da a tu sistema nervioso una señal de seguridad.</p>
+
+    <p>Durante el día, vivimos en un estado más activo, modo acción, hacer, resolver. Pero para dormir profundamente, el cuerpo necesita pasar a otro estado: más lento, más interno, más reparador. Eso es el sistema parasimpático.</p>
+
+    <p>Y no se activa por obligación… se activa cuando el cuerpo siente que puede bajar la guardia.</p>
+
+    <div class="highlight-box">
+        <p>La luz tenue, el silencio, la digestión liviana, la respiración, el calor del agua, los movimientos suaves, todos son mensajes.</p>
+        <p style="margin-top: 10px;"><strong>Mensajes que dicen: "ya está, podés descansar".</strong></p>
+        <p style="margin-top: 10px;">Y cuando el cuerpo recibe ese mensaje, el descanso deja de ser algo que buscás, y empieza a aparecer solo.</p>
+    </div>
+</div>
+
+<!-- 3AM -->
+<div class="page">
+    <h2>🌑 ¿Qué hacer si te despertás a las 3am?</h2>
+
+    <p>Primero, algo importante: despertarte a la madrugada no significa que algo esté mal.</p>
+
+    <p>Muchas veces el cuerpo se activa por procesos internos, por estrés acumulado o simplemente por cambios en los ciclos del sueño. Y lo que más suele alterar no es despertarse, sino lo que hacemos después con eso.</p>
+
+    <p>La mente se enciende. Aparece la preocupación: <em>"me tengo que dormir"</em>, <em>"mañana voy a estar cansada"</em>. Y ahí, el sistema nervioso vuelve al modo alerta.</p>
+
+    <p>Por eso, lo más importante en ese momento es <strong>no luchar</strong>. No forzarte a dormir. No entrar en diálogo con la mente. Sino acompañar al cuerpo a volver, de a poco, a la calma.</p>
+
+    <h3>🫁 Un ejercicio simple para volver a descansar</h3>
+
+    <p>Sin prender luces fuertes, sin mirar el teléfono, quedate acostada y llevá tu atención a la respiración.</p>
+
+    <ul>
+        <li>Inhalá suave por la nariz.</li>
+        <li>Exhalá lento por la boca, como un suspiro largo y suave, como si estuvieras soltando el día una vez más.</li>
+        <li>Con cada exhalación, sentí cómo el cuerpo pesa un poco más. Cómo se hunde, cómo afloja.</li>
+        <li>Si la mente se va, no pasa nada, volvés a la exhalación.</li>
+    </ul>
+
+    <div class="highlight-box">
+        <p>No estás buscando dormirte. Estás invitando al cuerpo a relajarse. Y muchas veces, cuando el cuerpo encuentra ese estado, el sueño vuelve solo.</p>
+    </div>
+
+    <p>Si pasan varios minutos y seguís muy despierta, podés sentarte en la cama o ir a otro espacio con luz tenue y hacer algo muy simple y monótono, como leer unas líneas o respirar. Sin pantallas. Sin estímulo. Solo hasta que el cuerpo vuelva a pedir descanso.</p>
+
+    <div class="italic-block">
+        No se trata de hacerlo perfecto.<br>
+        Se trata de dejar de pelear con el momento<br>
+        y empezar a acompañarlo.<br><br>
+        Porque incluso en la noche,<br>
+        también podés aprender a habitar la calma.
+    </div>
+</div>
+
+<!-- CIERRE -->
+<div class="page">
+    <h2>🌱 Una semilla para cerrar</h2>
+
+    <p>El sueño no es un problema aislado.</p>
+
+    <p>Es la expresión visible de un sistema nervioso que, hace tiempo, viene intentando sostener más de lo que puede.</p>
+
+    <p>Por eso, más que <em>"arreglar el sueño"</em>, la invitación es a observar. A escuchar qué está necesitando tu cuerpo. A volver a lo simple.</p>
+
+    <p>Porque en pequeños gestos, cómo respirás, cómo comés, cómo cerrás el día, hay una puerta enorme al cambio.</p>
+
+    <p>Sí, hay algo profundo para mirar. Pero también hay algo muy cercano: la posibilidad real de empezar hoy, con acciones simples, a transformar tu descanso. Y con él, tu manera de habitar la vida.</p>
+
+    <div class="cta-box">
+        <p><strong>Estate atenta a la comunidad.</strong><br>Estoy preparando algo que sé que te va a acompañar a volver a tu centro de forma sostenida.</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 60px; color: var(--color-secondary); font-style: italic;">
+        <p>Con amor,</p>
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; margin-top: 10px;">Erica Di Cione</p>
+    </div>
+</div>
+
+</body>
+</html>
